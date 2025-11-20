@@ -288,12 +288,20 @@ export default function AdminBoothsPage() {
             </button>
 
             <button
+              onClick={() => router.push("/admin/booking-requests")}
+              className="text-xs px-3 py-1.5 rounded-md border border-slate-600 text-slate-300 hover:bg-slate-800"
+            >
+              Booking requests
+            </button>
+
+            <button
               onClick={handleLogout}
               className="text-xs px-3 py-1.5 rounded-md border border-slate-600 text-slate-300 hover:bg-slate-800"
             >
               Logout
             </button>
           </div>
+
         </div>
 
         {error && (
