@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "../components/LanguageProvider";
+import hero from "../public/tedx/hero.jpg"
 
 export default function HomePage() {
   const { isArabic, toggleLang } = useLanguage();
@@ -13,137 +14,153 @@ export default function HomePage() {
       <div className="pointer-events-none fixed inset-x-0 top-0 h-40 bg-gradient-to-b from-red-500/25 via-transparent to-transparent" />
 
       {/* Hero + navbar */}
-      <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-black via-slate-950 to-black">
-        {/* Subtle background glow */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-32 left-1/2 h-80 w-[36rem] -translate-x-1/2 rounded-full bg-red-500/20 blur-3xl" />
-          <div className="absolute bottom-[-8rem] left-1/4 h-72 w-72 rounded-full bg-orange-500/20 blur-3xl" />
-        </div>
+      <div className="relative min-h-screen overflow-hidden bg-black">
+        {/* Hero background image */}
+        {/* Hero + navbar */}
+        {/* Hero + navbar */}
+        <div
+          className="relative min-h-screen overflow-hidden bg-black"
+          style={{
+            backgroundImage: "url('/tedx/hero.jpg')", // use .png if that's your file
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          {/* Dark overlay for readability */}
+          <div className="absolute inset-0 bg-black/70" />
 
-        {/* Navbar */}
-        <header className="relative z-20 border-b border-white/5 bg-black/70 backdrop-blur">
-          <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-            {/* Logo placeholder */}
-            <div className="flex items-center gap-3">
-              <div className="flex flex-col">
-                <div className="flex items-baseline gap-1 text-lg font-semibold tracking-tight">
-                  <span className="text-white">TEDx</span>
-                  <span className="text-red-500">Baghdad</span>
-                </div>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400">
-                  {isAr ? "معرض 2025" : "Exhibition 2025"}
-                </span>
-              </div>
-            </div>
-
-            {/* Nav actions */}
-            <nav className="flex items-center gap-3 text-xs md:text-sm">
-              <Link
-                href="/booths"
-                className="rounded-full border border-red-500/70 bg-red-600 px-4 py-1.5 text-[11px] font-medium tracking-wide text-white shadow-lg shadow-red-600/40 hover:bg-red-500"
-              >
-                {isAr ? "احجز جناح" : "Book Booth"}
-              </Link>
-
-              <Link
-                href="/admin/login"
-                className="hidden rounded-full border border-white/15 px-3 py-1.5 text-[11px] text-slate-200 hover:bg-white/5 md:inline-flex"
-              >
-                {isAr ? "ادمن" : "Admin"}
-              </Link>
-
-              {/* EN / AR toggle (uses LanguageProvider) */}
-              <button
-                type="button"
-                onClick={toggleLang}
-                className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-1 text-[11px] hover:bg-white/10"
-              >
-                <span
-                  className={
-                    isAr
-                      ? "text-slate-400"
-                      : "font-semibold text-slate-50"
-                  }
-                >
-                  EN
-                </span>
-                <span className="text-slate-400">/</span>
-                <span
-                  className={
-                    isAr
-                      ? "font-semibold text-slate-50"
-                      : "text-slate-400"
-                  }
-                >
-                  AR
-                </span>
-              </button>
-            </nav>
+          {/* Subtle background glow */}
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute -top-32 left-1/2 h-80 w-[36rem] -translate-x-1/2 rounded-full bg-red-500/25 blur-3xl" />
+            <div className="absolute bottom-[-8rem] left-1/4 h-72 w-72 rounded-full bg-orange-500/25 blur-3xl" />
           </div>
-        </header>
 
-        {/* Hero section */}
-        <section className="relative z-10 flex min-h-[calc(100vh-4rem)] items-center">
-          <div
-            className={
-              "mx-auto flex max-w-6xl flex-col items-center gap-10 px-4 py-16 text-center " +
-              (isAr ? "md:items-end md:text-right" : "md:items-start md:text-left")
-            }
-          >
-            <div className="max-w-3xl space-y-6">
-              <p className="text-xs uppercase tracking-[0.22em] text-slate-300">
-                {isAr
-                  ? "TEDxBaghdad | المؤتمر السنوي الخامس عشر"
-                  : "TEDxBaghdad | 15th Annual Exhibition"}
-              </p>
-
-              <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-red-500 drop-shadow-[0_0_22px_rgba(248,113,113,0.85)] sm:text-4xl md:text-5xl">
-                {isAr ? "ACTIONS   BEHIND   WORDS" : "ACTIONS   BEHIND   WORDS"}
-              </h1>
-
-              <div className="space-y-2 text-sm text-slate-200">
-                <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1.5 text-xs sm:text-sm">
-                  <span className="text-base">📅</span>
-                  <span>
-                    {isAr
-                      ? "السبت، 13 ديسمبر  2025، الساعة 11:00 صباحاً"
-                      : "Saturday, December 13, 2025, 11:00 AM"}
-                  </span>
-                </div>
-                <div className="inline-flex items-center gap-2 text-xs sm:text-sm">
-                  <span className="text-base">📍</span>
-                  <span>
-                    {isAr ? "قرية دجلة، بغداد" : "Dijlah Village, Baghdad"}
+          {/* Navbar */}
+          <header className="relative z-20 border-b border-white/5 bg-black/70 backdrop-blur">
+            <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+              {/* Logo placeholder */}
+              <div className="flex items-center gap-3">
+                <div className="flex flex-col">
+                  <div className="flex items-baseline gap-1 text-lg font-semibold tracking-tight">
+                    <span className="text-white">TEDx</span>
+                    <span className="text-red-500">Baghdad</span>
+                  </div>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                    {isAr ? "معرض 2025" : "Exhibition 2025"}
                   </span>
                 </div>
               </div>
 
-              <p className="max-w-xl text-xs text-slate-300 sm:text-sm">
-                {isAr
-                  ? "مساحة معرض مخصصة تلتقي فيها العلامات التجارية والشركات الناشئة والشركاء مع جمهور TEDx المتحمّس. احجز منصتك وكن جزءاً من تجربة تحوّل الأفكار إلى أفعال."
-                  : "A dedicated exhibition space where brands, startups, and partners meet a highly engaged TEDx audience. Reserve your booth and be part of the experience that turns ideas into action."}
-              </p>
-
-              <div className="flex flex-wrap items-center justify-center gap-4 md:justify-start">
+              {/* Nav actions */}
+              <nav className="flex items-center gap-3 text-xs md:text-sm">
                 <Link
                   href="/booths"
-                  className="inline-flex items-center justify-center rounded-full bg-red-600 px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-[0_18px_45px_rgba(220,38,38,0.65)] transition hover:bg-red-500"
+                  className="rounded-full border border-red-500/70 bg-red-600 px-4 py-1.5 text-[11px] font-medium tracking-wide text-white shadow-lg shadow-red-600/40 hover:bg-red-500"
                 >
-                  {isAr ? "احجز جناحك الآن" : "Book Booth Now"}
+                  {isAr ? "احجز جناح" : "Book Booth"}
                 </Link>
 
-                <a
-                  href="#why-participate"
-                  className="text-xs font-medium text-slate-300 underline-offset-4 hover:text-white hover:underline"
+                <Link
+                  href="/admin/login"
+                  className="hidden rounded-full border border-white/15 px-3 py-1.5 text-[11px] text-slate-200 hover:bg-white/5 md:inline-flex"
                 >
+                  {isAr ? "ادمن" : "Admin"}
+                </Link>
+
+                {/* EN / AR toggle (uses LanguageProvider) */}
+                <button
+                  type="button"
+                  onClick={toggleLang}
+                  className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-1 text-[11px] hover:bg-white/10"
+                >
+                  <span
+                    className={
+                      isAr
+                        ? "text-slate-400"
+                        : "font-semibold text-slate-50"
+                    }
+                  >
+                    EN
+                  </span>
+                  <span className="text-slate-400">/</span>
+                  <span
+                    className={
+                      isAr
+                        ? "font-semibold text-slate-50"
+                        : "text-slate-400"
+                    }
+                  >
+                    AR
+                  </span>
+                </button>
+              </nav>
+            </div>
+          </header>
+
+          {/* Hero section */}
+          <section className="relative z-10 flex min-h-[calc(100vh-4rem)] items-center">
+            <div
+              className={
+                "mx-auto flex max-w-6xl flex-col items-center gap-10 px-4 py-16 text-center " +
+                (isAr ? "md:items-end md:text-right" : "md:items-start md:text-left")
+              }
+            >
+              <div className="max-w-3xl space-y-6">
+                <p className="text-xs uppercase tracking-[0.22em] text-slate-300">
                   {isAr
-                    ? "تعرّف أكثر على تفاصيل المعرض"
-                    : "Learn more about the exhibition"}
-                </a>
+                    ? "TEDxBaghdad | المؤتمر السنوي الخامس عشر"
+                    : "TEDxBaghdad | 15th Annual Exhibition"}
+                </p>
+
+                <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-red-500 drop-shadow-[0_0_22px_rgba(248,113,113,0.85)] sm:text-4xl md:text-5xl">
+                  {isAr ? "ACTIONS   BEHIND   WORDS" : "ACTIONS   BEHIND   WORDS"}
+                </h1>
+
+                <div className="space-y-2 text-sm text-slate-200">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1.5 text-xs sm:text-sm">
+                    <span className="text-base">📅</span>
+                    <span>
+                      {isAr
+                        ? "السبت، 13 ديسمبر  2025، الساعة 11:00 صباحاً"
+                        : "Saturday, December 13, 2025, 11:00 AM"}
+                    </span>
+                  </div>
+                  <div className="inline-flex items-center gap-2 text-xs sm:text-sm">
+                    <span className="text-base">📍</span>
+                    <span>
+                      {isAr ? "قرية دجلة، بغداد" : "Dijlah Village, Baghdad"}
+                    </span>
+                  </div>
+                </div>
+
+                <p className="max-w-xl text-xs text-slate-300 sm:text-sm">
+                  {isAr
+                    ? "مساحة معرض مخصصة تلتقي فيها العلامات التجارية والشركات الناشئة والشركاء مع جمهور TEDx المتحمّس. احجز منصتك وكن جزءاً من تجربة تحوّل الأفكار إلى أفعال."
+                    : "A dedicated exhibition space where brands, startups, and partners meet a highly engaged TEDx audience. Reserve your booth and be part of the experience that turns ideas into action."}
+                </p>
+
+                <div className="flex flex-wrap items-center justify-center gap-4 md:justify-start">
+                  <Link
+                    href="/booths"
+                    className="inline-flex items-center justify-center rounded-full bg-red-600 px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-[0_18px_45px_rgba(220,38,38,0.65)] transition hover:bg-red-500"
+                  >
+                    {isAr ? "احجز جناحك الآن" : "Book Booth Now"}
+                  </Link>
+
+                  <a
+                    href="#why-participate"
+                    className="text-xs font-medium text-slate-300 underline-offset-4 hover:text-white hover:underline"
+                  >
+                    {isAr
+                      ? "تعرّف أكثر على تفاصيل المعرض"
+                      : "Learn more about the exhibition"}
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
 
       {/* Content sections below hero */}
@@ -314,63 +331,86 @@ export default function HomePage() {
           <div className={"grid gap-4 sm:grid-cols-2 lg:grid-cols-4"}>
             {/* Card 1 */}
             <article className="flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/80 shadow-lg shadow-black/40">
-              <div className="h-28 bg-gradient-to-tr from-red-500/40 via-slate-900 to-black" />
+              <div className="relative h-28 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/tedx/card1.jpg"
+                  alt="Direct interaction with visitors at an exhibition booth"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              </div>
               <div className="flex flex-1 flex-col gap-1 p-4">
-                <p className="text-sm font-semibold text-slate-50">
-                  {isAr ? "تفاعل مباشر مع الجمهور" : "Direct interaction with visitors"}
-                </p>
+                <p className="text-sm font-semibold text-slate-50">تفاعل مباشر مع الجمهور</p>
                 <p className="text-[11px] text-slate-300">
-                  {isAr
-                    ? "تحدث مع حضور مهتمين بالأفكار الجديدة والمنتجات المختلفة وجهاً لوجه."
-                    : "Talk face to face with visitors who are genuinely interested in new ideas and products."}
+                  تحدث مع حضور مهتمين بالأفكار الجديدة والمنتجات المختلفة وجهاً لوجه.
                 </p>
               </div>
             </article>
+
 
             {/* Card 2 */}
+            {/* Card 2 */}
             <article className="flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/80 shadow-lg shadow-black/40">
-              <div className="h-28 bg-gradient-to-tr from-orange-500/35 via-slate-900 to-black" />
+              <div className="relative h-28 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/tedx/card2.jpg"
+                  alt="Premium exhibition booth space"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              </div>
               <div className="flex flex-1 flex-col gap-1 p-4">
-                <p className="text-sm font-semibold text-slate-50">
-                  {isAr ? "مساحة مميزة لعرض خدماتك" : "A standout space for your brand"}
-                </p>
+                <p className="text-sm font-semibold text-slate-50">مساحة مميزة لعرض خدماتك</p>
                 <p className="text-[11px] text-slate-300">
-                  {isAr
-                    ? "منصتك تصبح جزءاً من تجربة TEDxBaghdad البصرية والقصصية."
-                    : "Your booth becomes part of the visual and storytelling experience of TEDxBaghdad."}
+                  منصتك تصبح جزءاً من تجربة TEDxBaghdad البصرية والقصصية.
                 </p>
               </div>
             </article>
+
 
             {/* Card 3 */}
+            {/* Card 3 */}
             <article className="flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/80 shadow-lg shadow-black/40">
-              <div className="h-28 bg-gradient-to-tr from-sky-500/40 via-slate-900 to-black" />
+              <div className="relative h-28 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/tedx/card3.jpg"
+                  alt="Networking and partnership opportunities"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              </div>
               <div className="flex flex-1 flex-col gap-1 p-4">
-                <p className="text-sm font-semibold text-slate-50">
-                  {isAr ? "فرص شراكات جديدة" : "New partnership opportunities"}
-                </p>
+                <p className="text-sm font-semibold text-slate-50">فرص شراكات جديدة</p>
                 <p className="text-[11px] text-slate-300">
-                  {isAr
-                    ? "التقِ بشركات ومبادرات ومؤسسات إعلامية قد تصبح شركاءك القادمين."
-                    : "Meet companies, initiatives, and media organizations that can become your next partners."}
+                  التقي بشركات، مبادرات، ومؤسسات إعلامية يمكن أن تصبح شركاءك المقبلين.
                 </p>
               </div>
             </article>
 
+
+            {/* Card 4 */}
             {/* Card 4 */}
             <article className="flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/80 shadow-lg shadow-black/40">
-              <div className="h-28 bg-gradient-to-tr from-emerald-500/35 via-slate-900 to-black" />
+              <div className="relative h-28 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/tedx/card4.jpg"
+                  alt="Media and social coverage at the event"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              </div>
               <div className="flex flex-1 flex-col gap-1 p-4">
-                <p className="text-sm font-semibold text-slate-50">
-                  {isAr ? "حضور إعلامي أقوى" : "Stronger media presence"}
-                </p>
+                <p className="text-sm font-semibold text-slate-50">حضور إعلامي أقوى</p>
                 <p className="text-[11px] text-slate-300">
-                  {isAr
-                    ? "استفد من تغطية السوشال ميديا وصور وفيديوهات الحدث لرفع حضور علامتك التجارية."
-                    : "Leverage social media coverage, photos, and videos from the event to amplify your brand presence."}
+                  استفد من تغطية السوشال ميديا وصور وفيديوهات الحدث لرفع حضور علامتك التجارية.
                 </p>
               </div>
             </article>
+
           </div>
         </section>
 

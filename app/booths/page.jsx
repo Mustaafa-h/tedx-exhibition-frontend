@@ -269,24 +269,27 @@ export default function BoothsPage() {
         {/* Map + booth list */}
         <section className="grid gap-6 lg:grid-cols-[2fr,3fr] items-start">
           {/* Floorplan */}
+          {/* Floorplan */}
           <div className="rounded-2xl border border-slate-800 bg-gradient-to-b from-slate-950 via-black to-slate-950 p-4 shadow-lg shadow-black/40">
-            <h2 className="text-sm font-semibold text-slate-100 mb-2">
-              {isAr ? "خريطة المعرض" : "Exhibition map"}
+            <h2 className="mb-2 text-sm font-semibold text-slate-100">
+              Exhibition map
             </h2>
 
-            <div className="relative w-full overflow-hidden rounded-xl border border-slate-800 bg-slate-900/80">
-              {/* floorplan placeholder */}
-              <div className="relative w-full h-[260px] md:h-[380px] bg-gradient-to-br from-slate-900 via-black to-slate-950 flex items-center justify-center">
-                <span className="text-[11px] text-slate-400">
-                  {isAr
-                    ? "صورة الخريطة هنا – سيتم استبدالها بالخريطة الحقيقية لاحقاً."
-                    : "Floorplan image placeholder – will be replaced with the actual map."}
-                </span>
-              </div>
+            <div className="relative w-full h-[260px] md:h-[380px] overflow-hidden rounded-xl border border-slate-800 bg-slate-900/80">
+              {/* floorplan image */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/tedx/map.png" // change to .png if needed
+                alt="TEDxBaghdad exhibition floorplan"
+                className="h-full w-full object-cover"
+              />
+              {/* subtle overlay for contrast */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
 
               {/* markers */}
               {boothsWithPosition.map((booth) => {
                 const pos = booth.position;
+                const meta = getCategoryMeta(booth.category);
                 const isOccupied = booth.status === "occupied";
 
                 return (
@@ -318,11 +321,10 @@ export default function BoothsPage() {
                         }, 1400);
                       }
                     }}
-                    className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-full border px-2 py-1 text-[10px] font-semibold shadow-md backdrop-blur ${
-                      isOccupied
+                    className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-full border px-2 py-1 text-[10px] font-semibold shadow-md backdrop-blur ${isOccupied
                         ? "bg-emerald-400 text-slate-900 border-emerald-600"
                         : "bg-black/80 text-slate-100 border-slate-500"
-                    }`}
+                      }`}
                     style={{
                       left: `${pos.x}%`,
                       top: `${pos.y}%`,
@@ -335,11 +337,14 @@ export default function BoothsPage() {
 
               {boothsWithPosition.length === 0 && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Empty state intentionally left minimal */}
+                  <span className="text-[11px] text-slate-400">
+                    No positioned booths yet – map markers will appear here.
+                  </span>
                 </div>
               )}
             </div>
           </div>
+
 
           {/* Booth cards */}
           <div className="space-y-4">
@@ -386,19 +391,18 @@ export default function BoothsPage() {
                           {getCategoryLabelForUi(booth.category)}
                         </span>
                         <span
-                          className={`text-[10px] px-2 py-0.5 rounded-full ${
-                            isOccupied
+                          className={`text-[10px] px-2 py-0.5 rounded-full ${isOccupied
                               ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/60"
                               : "bg-slate-700/60 text-slate-100 border border-slate-500/60"
-                          }`}
+                            }`}
                         >
                           {isOccupied
                             ? isAr
                               ? "محجوز"
                               : "Occupied"
                             : isAr
-                            ? "متاح"
-                            : "Empty"}
+                              ? "متاح"
+                              : "Empty"}
                         </span>
                       </div>
                     </div>
@@ -471,8 +475,8 @@ export default function BoothsPage() {
                               ? "جاري الحجز..."
                               : "Booking..."
                             : isAr
-                            ? "احجز"
-                            : "Book"}
+                              ? "احجز"
+                              : "Book"}
                         </button>
                       ) : (
                         <span className="text-[11px] text-slate-500">
